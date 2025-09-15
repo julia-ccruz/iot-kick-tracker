@@ -105,10 +105,10 @@ void loop() {
     // Envio dos dados para ThingSpeak
     HTTPClient http;
     String url = String(server) + "/update?api_key=" + apiKey + 
-                 "&field1=" + String(a.acceleration.x) + 
-                 "&field2=" + String(g.gyro.x) + 
-                 "&field3=" + String(speed) + 
-                 "&field4=" + String(kickCount);
+                 "&field1=" + String(speed) + 
+                 "&field2=" + String(a.acceleration.z) + 
+                 "&field3=" + String(kickCount) + 
+                 "&field4=" + String(g.gyro.z);
 
     http.begin(url);
     int httpCode = http.GET();

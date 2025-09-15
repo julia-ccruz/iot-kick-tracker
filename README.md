@@ -65,15 +65,13 @@ Esse projeto busca demonstrar como a **Internet das Coisas (IoT)** pode apoiar o
 
 ## 📊 Campos no ThingSpeak
 
-- Field 1 → Aceleração X (a.acceleration.x)
+- Field 1 → Velocidade simulada (km/h)
 
-- Field 2 → Aceleração Y (a.acceleration.y)
+- Field 2 → Aceleração Z (m/s²)
 
-- Field 3 → Aceleração Z (eixo vertical do sensor)
+- Field 3 → Nº de chutes (KickCount)
 
-- Field 4 → Velocidade simulada (potenciômetro)
-
-- Field 5 → Chute potente (1 = sim, 0 = não)
+- Field 4 → Rotação Z (rad/s)
 
 ---
 
@@ -186,10 +184,10 @@ void loop() {
     // Envio dos dados para ThingSpeak
     HTTPClient http;
     String url = String(server) + "/update?api_key=" + apiKey + 
-                 "&field1=" + String(a.acceleration.x) + 
-                 "&field2=" + String(g.gyro.x) + 
-                 "&field3=" + String(speed) + 
-                 "&field4=" + String(kickCount);
+                 "&field1=" + String(speed) + 
+                 "&field2=" + String(a.acceleration.z) + 
+                 "&field3=" + String(kickCount) + 
+                 "&field4=" + String(g.gyro.z);
 
     http.begin(url);
     int httpCode = http.GET();
